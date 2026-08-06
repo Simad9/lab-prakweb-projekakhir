@@ -1,5 +1,5 @@
 <?php
-$konek = new mysqli('localhost', 'root', '', 'projek_akhir_web');
+include '../config/koneksi.php';
 
 // Ngambil data
 $username = htmlspecialchars($_POST["username"]);

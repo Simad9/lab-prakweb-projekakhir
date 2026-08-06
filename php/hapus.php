@@ -1,7 +1,7 @@
 <?php
 $id_resep = $_GET["id_resep"];
 
-$konek = new mysqli('localhost', 'root', '', 'projek_akhir_web');
+include '../config/koneksi.php';
 
 $query = "DELETE FROM resep where id_resep=$id_resep";
 

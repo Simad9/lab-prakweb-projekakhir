@@ -1,7 +1,7 @@
 <?php
 session_start();
 // menghubungkan dengan koneksi
-$konek = new mysqli('localhost', 'root', '', 'projek_akhir_web');
+include '../config/koneksi.php';
 
 // Ambil id_user dari session
 $id_user = $_SESSION["id_user"];

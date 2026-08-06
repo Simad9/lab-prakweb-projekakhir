@@ -1,7 +1,7 @@
 <?php
 session_start();
 // menghubungkan dengan koneksi
-$konek = new mysqli('localhost', 'root', '', 'projek_akhir_web');
+include '../config/koneksi.php';
 
 // Check connection
 if ($konek->connect_error) {

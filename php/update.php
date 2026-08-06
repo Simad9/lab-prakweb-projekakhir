@@ -1,6 +1,6 @@
 <?php
 session_start();
-$konek = new mysqli('localhost', 'root', '', 'projek_akhir_web');
+include '../config/koneksi.php';
 
 $id_resep = htmlspecialchars($_POST["id_resep"]);
 $judul = htmlspecialchars($_POST["judul"]);

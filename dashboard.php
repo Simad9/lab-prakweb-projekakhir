@@ -1,6 +1,6 @@
 <?php
 session_start();
-$konek = new mysqli('localhost', 'root', '', 'projek_akhir_web');
+include './config/koneksi.php';
 ?>
 <?php require './php/session.php' ?>
 <?php require './component/head-data.php' ?>

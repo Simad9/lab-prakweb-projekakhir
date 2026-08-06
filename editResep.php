@@ -3,7 +3,7 @@ session_start();
 
 $id_resep = $_GET["id_resep"];
 
-$konek = new mysqli('localhost', 'root', '', 'projek_akhir_web');
+include './config/koneksi.php';
 
 $query = "SELECT * FROM `resep` WHERE id_resep ='$id_resep';";
 

@@ -1,5 +1,5 @@
 <?php
-$konek = new mysqli('localhost', 'root', '', 'projek_akhir_web');
+include './config/koneksi.php';
 ?>
 <?php require './component/head-data.php' ?>
 <?php require './component/menuTop.php' ?>

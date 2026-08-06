@@ -56,55 +56,51 @@ include './config/koneksi.php';
               <!-- CONTAIN -->
               <?php
               $id_user = $_SESSION["id_user"];
-              $query = mysqli_query($konek, "SELECT * FROM resep WHERE id_user = $id_user");
-              while ($row = mysqli_fetch_array($query)) {
+              $query = mysqli_query($konek, "SELECT * FROM resep WHERE id_user = $id_user ORDER BY tgl_pembuatan DESC");
+              $jumlahResep = mysqli_num_rows($query);
               ?>
 
-                <section class="food_section layout_padding d-inline-flex p-2">
-                  <div class="filters-content">
-                    <div class="row grid">
-                      <div class="col-sm-6 col-lg-12 all food ">
-                        <div class="box">
-                          <div class="img-box">
-                            <img src="./img/resep/<?= $row['foto']; ?>" alt="" />
-                          </div>
-                          <div class="detail-box">
-                            <h5 class="text-center"><?= $row['judul']; ?></h5>
-                            <!-- btn -->
-                            <div class="d-flex flex-column justify-content-center align-content-center gap-2">
-                              <div class="d-flex justify-content-center px-3 pt-2 gap-2">
-                                <a href="./editResep.php?id_resep=<?= $row['id_resep']; ?>">
-                                  <button class="btn-manual">
-                                    <i class="bi bi-pencil-square"></i>
-                                    Edit
-                                  </button>
-                                </a>
-                                <a href="./php/hapus.php?id_resep=<?= $row['id_resep']; ?>">
-                                  <button class="btn-hapus">
-                                    <i class="bi bi-trash"></i>
-                                    Hapus
-                                  </button>
-                                </a>
-                              </div>
-                              <div class="d-flex justify-content-center px-3 gap-2">
-                                <a href="detail.php?id_resep=<?= $row['id_resep'] ?>">
-                                  <button class="btn-cek">
-                                    <i class="bi bi-clipboard"></i>
-                                    Cek Resep
-                                  </button>
-                                </a>
-                              </div>
+              <div class="mx-2 my-3">
+                <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-3">
+                  <p class="m-0 text-grey2">Kamu punya <strong><?= $jumlahResep ?></strong> resep</p>
+                  <a href="tambah.php" class="btn-pill btn-pill-sm">
+                    <i class="bi bi-plus-lg"></i> Tambah Resep
+                  </a>
+                </div>
 
-                              <!-- End - btn -->
-                            </div>
-                          </div>
+                <?php if ($jumlahResep === 0) { ?>
+                  <div class="empty-state">
+                    <i class="bi bi-journal-plus"></i>
+                    <h4>Belum ada resep</h4>
+                    <p>Mulai bagikan resep pertamamu ke Dapur Kita.</p>
+                    <a href="tambah.php" class="btn-pill">
+                      <i class="bi bi-plus-lg"></i> Tambah Resep
+                    </a>
+                  </div>
+                <?php } ?>
 
-                        </div>
-
-                      </div>
+                <?php while ($row = mysqli_fetch_array($query)) { ?>
+                  <div class="resep-saya">
+                    <img src="./img/resep/<?= $row['foto']; ?>" alt="<?= $row['judul']; ?>" class="resep-saya-img" />
+                    <div class="resep-saya-info">
+                      <h5 class="mb-1"><?= $row['judul']; ?></h5>
+                      <p class="text-grey2 mb-1"><i class="bi bi-calendar3 me-1"></i><?= date('d M Y', strtotime($row['tgl_pembuatan'])); ?></p>
+                      <p class="truncate-line-clamp-2 mb-0"><?= $row['deskripsi']; ?></p>
                     </div>
-                </section>
-              <?php } ?>
+                    <div class="resep-saya-aksi">
+                      <a href="detail.php?id_resep=<?= $row['id_resep'] ?>" class="btn-manual btn-kecil">
+                        <i class="bi bi-clipboard"></i> Cek
+                      </a>
+                      <a href="./editResep.php?id_resep=<?= $row['id_resep']; ?>" class="btn-cek btn-kecil">
+                        <i class="bi bi-pencil-square"></i> Edit
+                      </a>
+                      <a href="./php/hapus.php?id_resep=<?= $row['id_resep']; ?>" class="btn-hapus btn-kecil" onclick="return confirm('Yakin ingin menghapus resep ini?')">
+                        <i class="bi bi-trash"></i> Hapus
+                      </a>
+                    </div>
+                  </div>
+                <?php } ?>
+              </div>
 
               <!-- END CONTAIN -->
             </div>

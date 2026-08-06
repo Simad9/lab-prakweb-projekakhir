@@ -2,43 +2,42 @@
 <title>Register</title>
 <?php require './component/LogRegTop.php' ?>
 
-<h1 class="text-center mb-3">Daftar Akun</h1>
-<div>
-  <form action="./php/daftar_akun.php" method="post">
-    <div class="mb-1">
-      <label for="username" class="form-label">Username</label>
-      <input type="text" class="form-control" id="username" name="username">
-    </div>
-    <div class="mb-2" x-data="{eye : true}">
-      <label for="password" class="form-label">Password</label>
-      <div class="d-flex justify-content-center align-items-center position-relative">
-        <input :type="eye ? 'password' : 'text'" class="form-control" id="password" name="password">
-        <i @click="eye = !eye" :class="eye ? 'bi-eye-slash':'bi-eye-fill' " class="bi text-hitam position-absolute cursor-pointer end-0 me-2"></i>
-      </div>
-    </div>
-    <div class="mb-2" x-data="{eye : true}">
-      <label for="password" class="form-label">Re-Password</label>
-      <div class="d-flex justify-content-center align-items-center position-relative">
-        <input :type="eye ? 'password' : 'text'" class="form-control" id="password" name="password2">
-        <i @click="eye = !eye" :class="eye ? 'bi-eye-slash':'bi-eye-fill' " class="bi text-hitam position-absolute cursor-pointer end-0 me-2"></i>
-      </div>
-    </div>
+<div class="text-center mb-4">
+  <h2 class="fw-bold mb-1">Daftar Akun</h2>
+  <p class="text-grey2 mb-0">Gabung dan bagikan resep pertamamu.</p>
 </div>
 
-<div class="d-flex justify-content-center my-3">
-  <button type="submit" class="btn-manual">Daftar</button>
-</div>
+<form action="./php/daftar_akun.php" method="post">
+  <div class="input-group mb-3">
+    <span class="input-group-text"><i class="bi bi-person"></i></span>
+    <input type="text" class="form-control" id="username" name="username" placeholder="Username" required />
+  </div>
 
+  <div class="input-group mb-3" x-data="{ eye: false }">
+    <span class="input-group-text"><i class="bi bi-lock"></i></span>
+    <input :type="eye ? 'text' : 'password'" class="form-control" id="password" name="password" placeholder="Password" required />
+    <button type="button" class="input-group-text cursor-pointer" @click="eye = !eye" tabindex="-1">
+      <i :class="eye ? 'bi-eye-slash' : 'bi-eye-fill'"></i>
+    </button>
+  </div>
+
+  <div class="input-group mb-4" x-data="{ eye: false }">
+    <span class="input-group-text"><i class="bi bi-lock-fill"></i></span>
+    <input :type="eye ? 'text' : 'password'" class="form-control" id="password2" name="password2" placeholder="Ulangi Password" required />
+    <button type="button" class="input-group-text cursor-pointer" @click="eye = !eye" tabindex="-1">
+      <i :class="eye ? 'bi-eye-slash' : 'bi-eye-fill'"></i>
+    </button>
+  </div>
+
+  <button type="submit" class="btn-pill w-100">Daftar</button>
 </form>
 
-<div class="d-flex flex-column justify-content-center align-items-center gap-2">
-  <p class="text-grey2 .text-15px">Punya akun?
-    <span">
-      <a href="login.php" class="cursor-pointer daftar-login_sekarang text-decoration-none">Masuk
-        sekarang</a>
-      </span>
+<div class="text-center mt-4">
+  <p class="text-grey2 small mb-0">Sudah punya akun?
+    <a href="login.php" class="daftar-login_sekarang">Masuk sekarang</a>
   </p>
 </div>
+
 </div>
 </div>
 </div>

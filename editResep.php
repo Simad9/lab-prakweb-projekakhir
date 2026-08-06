@@ -14,7 +14,6 @@ $data = mysqli_fetch_array($hasil);
 <?php require './php/session.php' ?>
 <?php require './component/head-data.php' ?>
 
-<link rel="stylesheet" href="style.css" />
 <title>Edit Resep</title>
 </head>
 
@@ -28,7 +27,7 @@ $data = mysqli_fetch_array($hasil);
       <div class="p-2 mt-2 d-flex flex-column justify-content-between h-100">
         <div class="tempat-nav-item d-flex flex-column gap-1">
           <a class="text-decoration-none" href="dashboard.php">
-            <div class="d-flex justify-content-start align-items-end gap-2 item-navigation px-3 cursor-pointe">
+            <div class="d-flex justify-content-start align-items-end gap-2 item-navigation px-3 cursor-pointer active">
               <i class="bi bi-grid fs-3"></i>
               <h4>Resep Saya</h4>
             </div>
@@ -40,7 +39,7 @@ $data = mysqli_fetch_array($hasil);
             </div>
           </a>
           <a class="text-decoration-none" href="editProfile.php">
-            <div class="d-flex justify-content-start align-items-end gap-2 item-navigation px-3 cursor-pointe">
+            <div class="d-flex justify-content-start align-items-end gap-2 item-navigation px-3 cursor-pointer">
               <i class="bi bi-person-fill fs-3"></i>
               <h4>Edit Profile</h4>
             </div>
@@ -61,48 +60,48 @@ $data = mysqli_fetch_array($hasil);
               </div>
 
               <!-- CONTAIN -->
-              <form action="./php/update.php" method="post" enctype="multipart/form-data">
-                <div class="resep d-flex flex-wrap justify-content-start gap-2 mx-2">
-                  <div class="w-75 d-flex flex-column align-items-start">
-                    <div class="d-flex justify-content-center align-items-center">
-                      <h4 class="mt-2">Gambar Makanan :</h4>
-                      <div>
-                        <input id="file-upload" name="foto" type="file" accept="image/*" onchange="loadFile(event)" class="ms-3" />
-                      </div>
-                    </div>
-                    <img src="./img/resep/<?= $data['foto'] ?>" id="imageView" class="bg-secondary gambar-resep-prev mt-2 rounded-4" />
+              <form action="./php/update.php" method="post" enctype="multipart/form-data" class="mx-2 my-3">
+                <div class="upload-box">
+                  <img src="./img/resep/<?= $data['foto'] ?>" id="imageView" class="gambar-resep-prev upload-preview" alt="Preview gambar" />
+                  <div class="upload-info">
+                    <label for="file-upload" class="btn-pill cursor-pointer mb-2">
+                      <i class="bi bi-image"></i> Pilih Gambar
+                    </label>
+                    <p class="text-grey2 mb-0 small">PNG, JPG, atau WebP. Ukuran maksimal 5MB. Kosongkan jika tidak ingin mengganti.</p>
+                  </div>
+                  <input id="file-upload" name="foto" type="file" accept="image/*" onchange="loadFile(event)" hidden />
+                </div>
+
+                <input type="hidden" name="gambarLama" value="<?= $data['foto'] ?>">
+                <input type="hidden" name="id_resep" value="<?= $data['id_resep'] ?>">
+
+                <div class="row mt-4">
+                  <div class="col-12">
+                    <label for="judul" class="form-label-custom">Judul Makanan</label>
+                    <input type="text" id="judul" name="judul" value="<?= $data['judul'] ?>" class="form-control" placeholder="Judul Makanan" />
                   </div>
 
-                  <input type="hidden" name="gambarLama" value="<?= $data['foto'] ?>">
-                  <input type="hidden" name="id_resep" value="<?= $data['id_resep'] ?>">
-
-                  <div class="w-100">
-                    <h4 class="mt-2">Judul Makanan :</h4>
-                    <input type="text" name="judul" value="<?= $data['judul'] ?>" class="form-control border-black" placeholder="Judul Makanan" />
+                  <div class="col-12 mt-3">
+                    <label for="deskripsi" class="form-label-custom">Deskripsi Singkat</label>
+                    <textarea name="deskripsi" id="deskripsi" class="form-control" placeholder="Deskripsi singkat" style="height: 100px; resize: none"><?= $data['deskripsi'] ?></textarea>
                   </div>
 
-                  <div class="w-100">
-                    <h4 class="mt-2">Deskripsi Singkat :</h4>
-                    <textarea name="deskripsi" value="<?= $data['deskripsi'] ?>" class="form-control border-black" placeholder="Deskripsi singkat" style="height: 100px; resize: none"><?= $data['deskripsi'] ?></textarea>
+                  <div class="col-12 mt-3">
+                    <label class="form-label-custom">Bahan-bahan</label>
+                    <textarea name="bahan_bahan" id="editor" class="form-control" placeholder="Bahan-bahan"><?= $data['bahan_bahan'] ?></textarea>
                   </div>
 
-                  <div class="w-100">
-                    <h4 class="mt-2">Bahan-bahan :</h4>
-                    <!-- <textarea name="bahan_bahan" class="form-control border-black" placeholder="Bahan-bahan" style="height: 100px; resize: none"><?= $data['bahan_bahan'] ?></textarea> -->
-                    <textarea name="bahan_bahan" id="editor" class="form-control border-black" placeholder="Bahan-bahan" style="height: 100px; resize: none"><?= $data['bahan_bahan'] ?></textarea>
+                  <div class="col-12 mt-3">
+                    <label class="form-label-custom">Cara Pembuatan</label>
+                    <textarea name="cara_pembuatan" id="editor" class="form-control" placeholder="Cara pembuatan"><?= $data['cara_pembuatan'] ?></textarea>
                   </div>
+                </div>
 
-                  <div class="w-100">
-                    <h4 class="mt-2">Cara Pembuatan :</h4>
-                    <!-- <textarea name="cara_pembuatan" class="form-control border-black" placeholder="Cara Pembuatan" style="height: 100px; resize: none"><?= $data['cara_pembuatan'] ?></textarea> -->
-                    <textarea name="cara_pembuatan" id="editor" class="form-control border-black" placeholder="Cara Pembuatan" style="height: 100px; resize: none"><?= $data['cara_pembuatan'] ?></textarea>
-                  </div>
-
-
-
-                  <div class="w-100 d-flex justify-content-center mt-4">
-                    <button type="submit" class="btn-manual">Kirim</button>
-                  </div>
+                <div class="d-flex justify-content-center gap-2 mt-4">
+                  <a href="dashboard.php" class="btn-cek btn-pill-sm">Batal</a>
+                  <button type="submit" class="btn-pill">
+                    <i class="bi bi-check2-circle"></i> Simpan
+                  </button>
                 </div>
               </form>
               <!-- END CONTAIN -->

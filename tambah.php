@@ -52,43 +52,45 @@ session_start();
 
               <!-- CONTAIN -->
 
-              <form action="./php/add_proses.php" method="post" enctype="multipart/form-data">
-                <div class="resep d-flex flex-wrap justify-content-start gap-2 mx-2">
-                  <div class="w-75 d-flex flex-column align-items-start">
-                    <div class="d-flex justify-content-center align-items-center">
-                      <h4 class="mt-2">Gambar Makanan :</h4>
-                      <div>
-                        <input id="file-upload" name="foto" type="file" accept="image/*" onchange="loadFile(event)" class="ms-3" />
-                      </div>
-                    </div>
-                    <img src="./img/resep-dummy.png" id="imageView" class="bg-secondary gambar-resep-prev mt-2 rounded-4" />
+              <form action="./php/add_proses.php" method="post" enctype="multipart/form-data" class="mx-2 my-3">
+                <div class="upload-box">
+                  <img src="./img/resep-dummy.png" id="imageView" class="gambar-resep-prev upload-preview" alt="Preview gambar" />
+                  <div class="upload-info">
+                    <label for="file-upload" class="btn-pill cursor-pointer mb-2">
+                      <i class="bi bi-image"></i> Pilih Gambar
+                    </label>
+                    <p class="text-grey2 mb-0 small">PNG, JPG, atau WebP. Ukuran maksimal 5MB.</p>
+                  </div>
+                  <input id="file-upload" name="foto" type="file" accept="image/*" onchange="loadFile(event)" hidden />
+                </div>
+
+                <div class="row mt-4">
+                  <div class="col-12">
+                    <label for="judul" class="form-label-custom">Judul Makanan</label>
+                    <input type="text" id="judul" name="judul" class="form-control" placeholder="Contoh: Rendang Sapi" />
                   </div>
 
-                  <div class="w-100">
-                    <h4 class="mt-2">Judul Makanan :</h4>
-                    <input type="text" name="judul" class="form-control border-black" placeholder="Judul Makanan" />
+                  <div class="col-12 mt-3">
+                    <label for="deskripsi" class="form-label-custom">Deskripsi Singkat</label>
+                    <textarea name="deskripsi" id="deskripsi" class="form-control" placeholder="Ceritakan singkat tentang resepmu..." style="height: 100px; resize: none"></textarea>
                   </div>
 
-                  <div class="w-100">
-                    <h4 class="mt-2">Deskripsi Singkat :</h4>
-                    <textarea name="deskripsi" class="form-control border-black" placeholder="Deskripsi singkat" style="height: 100px; resize: none"></textarea>
+                  <div class="col-12 mt-3">
+                    <label class="form-label-custom">Bahan-bahan</label>
+                    <textarea name="bahan_bahan" id="editor" class="form-control" placeholder="Bahan-bahan"></textarea>
                   </div>
 
-                  <div class="w-100">
-                    <h4 class="mt-2">Bahan-bahan :</h4>
-                    <!-- <textarea name="bahan_bahan" class="form-control border-black" placeholder="Bahan-bahan" style="height: 100px; resize: none"></textarea> -->
-                    <textarea name="bahan_bahan" id="editor" class="form-control border-black" placeholder="Bahan-bahan" style="height: 100px; resize: none"></textarea>
+                  <div class="col-12 mt-3">
+                    <label class="form-label-custom">Cara Pembuatan</label>
+                    <textarea name="cara_pembuatan" id="editor" class="form-control" placeholder="Cara pembuatan"></textarea>
                   </div>
+                </div>
 
-                  <div class="w-100">
-                    <h4 class="mt-2">Cara Pembuatan :</h4>
-                    <!-- <textarea name="cara_pembuatan" class="form-control border-black" placeholder="Cara Pembuatan" style="height: 100px; resize: none"></textarea> -->
-                    <textarea name="cara_pembuatan" id="editor" class="form-control border-black" placeholder="Cara Pembuatan" style="height: 100px; resize: none"></textarea>
-                  </div>
-
-                  <div class="w-100 d-flex justify-content-center mt-4">
-                    <button type="submit" class="btn-manual">Kirim</button>
-                  </div>
+                <div class="d-flex justify-content-center gap-2 mt-4">
+                  <a href="dashboard.php" class="btn-cek btn-pill-sm">Batal</a>
+                  <button type="submit" class="btn-pill">
+                    <i class="bi bi-send"></i> Kirim
+                  </button>
                 </div>
               </form>
               <!-- END CONTAIN -->

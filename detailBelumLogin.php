@@ -9,21 +9,17 @@ include './config/koneksi.php';
 
 <body>
   <!-- NAVBAR -->
-  <nav class="navbar bg-grey py-2 px-5 shadow-lg d-flex align-items-center">
-    <h1 class="my-2 text-putih fs-2">Dapur Kita</h1>
-    <div class="d-flex gap-4">
-      <a class="text-decoration-none text-light nav-item" href="index.php">Home</a>
-      <a class="text-decoration-none text-light nav-item" href="menu.php">Resep</a>
-      <a class="text-decoration-none text-light nav-item" href="about.php">Tentang Kami</a>
+  <nav class="navbar navbar-expand-lg bg-grey py-2 px-4 shadow-lg">
+    <a class="navbar-brand fw-bold text-putih fs-3" href="index.php">Dapur <span class="text-warning">Kita</span></a>
+    <div class="ms-auto d-flex align-items-center gap-4">
+      <div class="d-none d-lg-flex gap-4">
+        <a class="text-decoration-none text-light nav-item" href="index.php">Home</a>
+        <a class="text-decoration-none text-light nav-item" href="menu.php">Resep</a>
+        <a class="text-decoration-none text-light nav-item" href="about.php">Tentang Kami</a>
+      </div>
+      <a href="login.php" class="btn-pill btn-pill-sm">Login</a>
     </div>
+  </nav>
 
-    <div class="user_option">
-      <form class="form-inline">
-        <button class="btn my-2 my-sm-0 nav_search-btn" type="submit">
-          <i class="fa fa-search" aria-hidden="true"></i>
-        </button>
-      </form>
-      <a href="login.php" class="order_online"> Login </a>
-    </div>
-    <?php require './component/detailContentTwo.php' ?>
-    <?php require './component/footer-data.php' ?>
+  <?php require './component/detailContentTwo.php' ?>
+  <?php require './component/footer-data.php' ?>

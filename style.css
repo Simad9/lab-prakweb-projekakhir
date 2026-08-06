@@ -61,9 +61,14 @@ input[type="file"]::file-selector-button:hover {
 .btn-manual {
   background-color: var(--kuning);
   padding: 10px 20px;
-  border: 10px;
+  border: none;
   color: var(--text-putih);
   border-radius: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: background-color .3s, box-shadow .3s, transform .2s;
 }
 
 .btn-manual:hover {
@@ -72,14 +77,20 @@ input[type="file"]::file-selector-button:hover {
 
 .btn-manual:active {
   box-shadow: 0 0 7px 4px var(--kuning);
+  transform: scale(.97);
 }
 
 .btn-cek {
   background-color: var(--grey2);
   padding: 10px 20px;
-  border: 10px;
+  border: none;
   color: var(--text-putih);
   border-radius: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: background-color .3s, box-shadow .3s, transform .2s;
 }
 
 .btn-cek:hover {
@@ -88,14 +99,20 @@ input[type="file"]::file-selector-button:hover {
 
 .btn-cek:active {
   box-shadow: 0 0 7px 4px var(--grey2);
+  transform: scale(.97);
 }
 
 .btn-hapus {
   background-color: rgb(249, 57, 57);
   padding: 10px 20px;
-  border: 10px;
+  border: none;
   color: var(--text-putih);
   border-radius: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: background-color .3s, box-shadow .3s, transform .2s;
 }
 
 .btn-hapus:hover {
@@ -104,6 +121,7 @@ input[type="file"]::file-selector-button:hover {
 
 .btn-hapus:active {
   box-shadow: 0 0 7px 4px rgb(249, 57, 57);
+  transform: scale(.97);
 }
 
 /* ---- */
@@ -184,6 +202,9 @@ input[type="file"]::file-selector-button:hover {
   width: 140px;
   height: 140px;
   background-color: var(--grey2);
+  object-fit: cover;
+  border: 3px solid var(--kuning);
+  flex-shrink: 0;
 }
 
 /* END FOTO PROFILE */
@@ -207,10 +228,8 @@ input[type="file"]::file-selector-button:hover {
 
 .bg-login {
   background-image: url(img/bg-login.png);
-  background-repeat: repeat;
-  transform: scale(103%);
+  background-size: cover;
   background-position: center;
-  overflow: hidden;
 }
 
 .h-100dvh {
@@ -244,11 +263,12 @@ input[type="file"]::file-selector-button:hover {
 }
 
 .daftar-login_sekarang {
-  color: var(--text-putih);
+  color: var(--kuning);
+  font-weight: 600;
 }
 
 .daftar-login_sekarang:hover {
-  color: #bcbbbb;
+  color: #e8a71b;
 }
 
 .item-navigation {
@@ -305,4 +325,422 @@ input[type="file"]::file-selector-button:hover {
   -webkit-box-orient: vertical;
   width: 100%;
   overflow: hidden;
+}
+
+/* ====== DESIGN IMPROVEMENTS ====== */
+
+/* Pill button */
+.btn-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background-color: var(--kuning);
+  color: #fff;
+  padding: 11px 26px;
+  border: none;
+  border-radius: 50px;
+  font-weight: 600;
+  transition: all .3s;
+}
+
+.btn-pill:hover {
+  background-color: #e8a71b;
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(255, 190, 51, .45);
+}
+
+.btn-pill:active {
+  transform: scale(.97);
+}
+
+.btn-pill-sm {
+  padding: 8px 16px;
+  font-size: .9rem;
+}
+
+/* Small action buttons (dashboard cards) */
+.btn-kecil {
+  padding: 7px 14px;
+  font-size: .85rem;
+  border-radius: 8px;
+  white-space: nowrap;
+}
+
+/* Menu page heading */
+.heading_sub {
+  max-width: 520px;
+  color: var(--grey2);
+  margin: 12px auto 0;
+  font-size: 15px;
+}
+
+/* Search bar */
+.search-wrap {
+  position: relative;
+  max-width: 420px;
+  margin: 30px auto 0;
+}
+
+.search-wrap i {
+  position: absolute;
+  left: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--grey2);
+  z-index: 1;
+}
+
+.search-input {
+  width: 100%;
+  padding: 14px 20px 14px 48px;
+  border-radius: 50px;
+  border: 1px solid rgba(0, 0, 0, .15);
+  background: #fff;
+  font-size: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, .06);
+  transition: box-shadow .3s, border-color .3s;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: var(--kuning);
+  box-shadow: 0 4px 20px rgba(255, 190, 51, .25);
+}
+
+.search-input::placeholder {
+  color: var(--grey2);
+}
+
+/* Recipe card hover */
+.resep-card-hover {
+  transition: box-shadow .3s, transform .3s;
+}
+
+.resep-card-hover:hover {
+  box-shadow: 0 12px 30px rgba(0, 0, 0, .18);
+  transform: translateY(-6px);
+}
+
+/* Card meta (author + date) */
+.penulis {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  font-size: .85rem;
+  color: #b8b8b8;
+  margin: 6px 0 10px;
+}
+
+.penulis .dot {
+  color: #777;
+}
+
+/* Dashboard "Resep Saya" cards */
+.resep-saya {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  background: #fff;
+  border-radius: 14px;
+  padding: 14px;
+  border: 1px solid rgba(0, 0, 0, .08);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, .05);
+  transition: transform .3s, box-shadow .3s;
+  margin-bottom: 14px;
+}
+
+.resep-saya:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, .12);
+}
+
+.resep-saya-img {
+  width: 130px;
+  height: 95px;
+  object-fit: cover;
+  border-radius: 10px;
+  flex-shrink: 0;
+}
+
+.resep-saya-info {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.resep-saya-info h5 {
+  font-weight: 600;
+  color: var(--grey);
+}
+
+.resep-saya-aksi {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+/* Empty state */
+.empty-state {
+  padding: 50px 20px;
+  text-align: center;
+}
+
+.empty-state i {
+  font-size: 60px;
+  color: var(--kuning);
+}
+
+.empty-state h4 {
+  margin: 15px 0 5px;
+  font-weight: 700;
+  color: var(--grey);
+}
+
+.empty-state p {
+  color: var(--grey2);
+  margin-bottom: 20px;
+}
+
+/* Form fields inside dashboard area */
+.wadah .form-control {
+  border: 1px solid rgba(0, 0, 0, .15);
+  border-radius: 10px;
+  padding: 12px 14px;
+  transition: border-color .3s, box-shadow .3s;
+}
+
+.wadah .form-control:focus {
+  border-color: var(--kuning);
+  box-shadow: 0 0 0 4px rgba(255, 190, 51, .15);
+}
+
+.form-label-custom {
+  font-weight: 600;
+  color: var(--grey);
+  margin-bottom: 6px;
+  display: block;
+}
+
+/* Image upload box */
+.upload-box {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 20px;
+  border: 2px dashed rgba(0, 0, 0, .18);
+  border-radius: 15px;
+  background: #fff;
+}
+
+.upload-preview {
+  width: 200px;
+  height: 130px;
+  object-fit: cover;
+  border-radius: 10px;
+  flex-shrink: 0;
+}
+
+/* Extra truncate helper */
+.truncate-line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Responsive: sidebar stacks on small screens */
+@media (max-width: 991.98px) {
+  .kiri {
+    position: static !important;
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  .kiri-tipuan {
+    display: none;
+  }
+
+  .kanan {
+    width: 100% !important;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .resep-saya {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .resep-saya-img {
+    width: 100%;
+    height: 180px;
+  }
+
+  .resep-saya-aksi {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .upload-box {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .upload-preview {
+    width: 100%;
+    height: auto;
+    max-height: 220px;
+  }
+}
+
+/* ====== LOGIN / REGISTER ====== */
+
+.card-login {
+  width: 100%;
+  max-width: 430px;
+  background: #fff;
+  border-radius: 20px;
+  padding: 35px 30px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, .35);
+}
+
+.card-login .input-group-text {
+  background: var(--putih);
+  border: 1px solid #e3e3e3;
+  color: var(--grey);
+}
+
+.card-login .input-group-text:first-child {
+  border-right: 0;
+}
+
+.card-login .form-control {
+  border: 1px solid #e3e3e3;
+}
+
+.card-login .form-control:focus {
+  border-color: var(--kuning);
+  box-shadow: 0 0 0 4px rgba(255, 190, 51, .15);
+}
+
+.card-login .line-divider {
+  flex: 1;
+  height: 1px;
+  background: #e5e5e5;
+}
+
+/* Demo account chips */
+.demo-chip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  background: var(--putih);
+  border: 1px solid #e3e3e3;
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-size: .9rem;
+  color: var(--grey);
+  transition: border-color .2s, background-color .2s, transform .2s;
+}
+
+.demo-chip:hover {
+  background: #fffbe8;
+  border-color: var(--kuning);
+  transform: translateY(-2px);
+}
+
+/* ====== DETAIL RESEP ====== */
+
+.detail-hero {
+  position: relative;
+  min-height: 340px;
+  overflow: hidden;
+}
+
+.detail-hero-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.detail-hero-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 32px;
+  color: #fff;
+  background: linear-gradient(to top, rgba(0, 0, 0, .85) 0%, rgba(0, 0, 0, .35) 55%, rgba(0, 0, 0, .1) 100%);
+}
+
+.detail-hero-overlay h1 {
+  font-size: 2.2rem;
+}
+
+.badge-pill {
+  display: inline-block;
+  align-self: flex-start;
+  background: var(--kuning);
+  color: #fff;
+  font-size: .75rem;
+  font-weight: 700;
+  padding: 5px 16px;
+  border-radius: 50px;
+  margin-bottom: 14px;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+}
+
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+  color: var(--grey);
+}
+
+.section-title i {
+  color: var(--kuning);
+}
+
+.resep-lain {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: var(--grey);
+  padding: 10px;
+  border-radius: 15px;
+  width: 160px;
+  transition: transform .3s, box-shadow .3s;
+}
+
+.resep-lain:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, .3);
+}
+
+.navbar .nav-item:hover {
+  color: var(--kuning) !important;
+}
+
+@media (max-width: 575.98px) {
+  .detail-hero {
+    min-height: 240px;
+  }
+
+  .detail-hero-overlay {
+    padding: 20px;
+  }
+
+  .detail-hero-overlay h1 {
+    font-size: 1.5rem;
+  }
 }
